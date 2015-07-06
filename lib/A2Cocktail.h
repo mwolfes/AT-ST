@@ -31,9 +31,6 @@
 #include "TRandom3.h"
 
 
-using namespace std;
-
-
 class ManagedPlutoReaction{
 public:
     /**
@@ -58,12 +55,12 @@ private:
     public:
         double Energy;
         double AccProbability;
-        vector<string> DecayProducts;
-        vector<pair<double,PReaction*>> Channellist;
+        std::vector<std::string> DecayProducts;
+        std::vector<std::pair<double,PReaction*>> Channellist;
     };
 
     //-- Options ---
-    string _outfileName;
+    std::string _outfileName;
     double _Emin;
     double _Emax;
     double _numEnergyBins;
@@ -76,21 +73,21 @@ private:
     TTree* _data;
 
     //-- data:
-    vector<BinContent> _energyBins;
+    std::vector<BinContent> _energyBins;
 
     //-- Tools ---
     TRandom3* _rndEngine;
 
-    void init(vector<string> filelist);
-    PReaction* makeReaction(const double &energy, const string& particles) const;
+    void init(std::vector<std::string> filelist);
+    PReaction* makeReaction(const double &energy, const std::string& particles) const;
 
 public:
-    A2Cocktail(const string& outfile,
+    A2Cocktail(const std::string& outfile,
                const double& Emin, const double& Emax,
                const unsigned int numEnergyBins,
                bool saveUnstable = 0, const bool doBulk = 1,
-               vector<string> filenames = {},
-               const string& energyDistribution = "1.0 / x" ):
+               std::vector<std::string> filenames = {},
+               const std::string& energyDistribution = "1.0 / x" ):
         _outfileName(outfile),
         _Emin(Emin), _Emax(Emax),
         _numEnergyBins(numEnergyBins),
@@ -109,9 +106,13 @@ public:
 
     virtual unsigned long Sample(const unsigned long &nevts) const;
     virtual void Finish() const;
+    //virtual ~A2Cocktail(){Finish();} maybe better, not sure yet
 };
 
 
+/**
+ * @brief The A2OldCocktail class generates MC events for a fixed energy, using the Pluto class PDecayManager
+ */
 class A2OldCocktail{
 private:
 
@@ -143,7 +144,7 @@ public:
             _pdm->AddBulk(_bulkdecay);
         }
     }
-    int Sample(unsigned int n_evts, const string& ofile) {
+    int Sample(unsigned int n_evts, const std::string& ofile) {
         return _pdm->Loop(n_evts,0,strdup(ofile.c_str()) ,_stable,0,1,0,1);
         //                                             ...,stable,obs,vertex,ascii,random)
         //                                                                   files  order

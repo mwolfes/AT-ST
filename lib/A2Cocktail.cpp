@@ -4,6 +4,8 @@
 
 #include "TH1D.h"
 
+using namespace std;
+
 
 void A2OldCocktail::_makeDecays() {
 

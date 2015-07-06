@@ -22,22 +22,19 @@
 #include "PDecayChannel.h"
 
 
-using namespace std;
-
-
 struct ParticleData{
-    vector<double> Energies;
-    vector<double> Xsections;
+    std::vector<double> Energies;
+    std::vector<double> Xsections;
 } ;
 
 // Cross-section-list is a collection of named Particle data
-using XsecList = map<string,ParticleData>;
+using XsecList = std::map<std::string,ParticleData>;
 
 class A2ChannelManager {
 private:
     XsecList _XList;
 
-    void unifyDecayName(string &decay)const;
+    void unifyDecayName(std::string &decay)const;
 
     /**
      * @brief ParseFile reads provided file and fills internal database of this object.
@@ -57,14 +54,14 @@ private:
      *
      *
      */
-    const bool ParseFile(const string& filename);
+    const bool ParseFile(const std::string& filename);
 
 public:
-    A2ChannelManager(vector<string> dataFiles = {});
+    A2ChannelManager(std::vector<std::string> dataFiles = {});
 
-    vector<string> GetChannels() const;
+    std::vector<std::string> GetChannels() const;
 
-    double Xsection(const string& name, const double Egamma) const;
+    double Xsection(const std::string& name, const double Egamma) const;
     double TotalXsection(const double &Egamma) const;            // mask out decays {list}
 
     PDecayChannel* GenerateDecays(const double& Energy);  // mask out decays {list}

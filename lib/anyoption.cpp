@@ -60,6 +60,7 @@
  */
 
 #include "anyoption.h"
+using namespace std;
 
 AnyOption::AnyOption()
 {
@@ -131,7 +132,7 @@ AnyOption::init(int maxopt, int maxcharopt )
 	strcpy( long_opt_prefix , "--" );
 
 	if( alloc() == false ){
-		cout << endl << "OPTIONS ERROR : Failed allocating memory" ;
+        cout << endl << "OPTIONS ERROR : Failed allocating memory" ;
 		cout << endl ;
 		cout << "Exiting." << endl ;
 		exit (0);
