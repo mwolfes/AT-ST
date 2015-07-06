@@ -12,10 +12,6 @@
 *.la
 *.a
 
-# Ignore bin directory
-bin
-lib
-
 # some files usually ignored
 /CMakeLists.txt.user
 *.root
