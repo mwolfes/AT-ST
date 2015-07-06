@@ -1,0 +1,39 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Ignore bin directory
+bin
+lib
+
+# some files usually ignored
+/CMakeLists.txt.user
+*.root
+
+# Ignore jobs directory for farming
+jobs
+
+
+# Temp files
+*.swp
+*~
+*.autosave
+
+# gitstuff
+CMakeCache.txt
+CMakeFiles
+Makefile
+build
+cmake_install.cmake
+ideas.txt
+__pycache__
