@@ -19,5 +19,5 @@ message("==>  Compiler flags:   " ${DEFAULT_COMPILE_FLAGS})
 INSTALL(CODE "FILE(MAKE_DIRECTORY ${EXECUTABLE_OUTPUT_PATH})")
 INSTALL(CODE "FILE(MAKE_DIRECTORY ${LIBRARY_OUTPUT_PATH})")
 
-add_subdirectory (lib)
+add_subdirectory (ape)
 add_subdirectory (tools)
